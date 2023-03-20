@@ -1,0 +1,88 @@
+* Sintaksa
+
+Vsak razred mora biti v svoji datoteki z istim imenom kot razred (+ =.java=).
+
+Funkcija =main= ima določeno obliko; =public static void main(String[] args)=.
+
+Konteksti, komentarji, spremenljivke, pogojni stavki, zanke so vsi C-style;
+#+begin_src java
+  int x = 3;
+
+  // krneki
+  /* krneki, 
+	 ampak
+	 multi
+	 line
+  ,*/
+
+  for (int i = 0; i < 1000; i++) {
+	  System.out.format("%d\n", i);
+  }
+
+  while (true) {
+	  if (3 != 2) break;
+	  else continue;
+  }
+#+end_src
+
+Za output uporabljaš =System.out.print=, =System.out.println= ali =System.out.forat= (slednji uporablja printf-style formatnike).
+
+Branje:
+#+begin_src java
+  // to je vse unbuffered in blazno počasano
+  Scanner sc = new Scanner(System.in);
+  String s = sc.next();  // prebere eno besedo
+  String ln = sc.nextLine();  // prebere eno vrstico
+  int nt = sc.nextInt();
+  float oat = sc.nextFloat();
+  double ble = sc.nextDouble();
+#+end_src
+
+Dostopnost: =public= / =protected= / =package-private= / =private=.
+
+Osnovni tipi:
+- =int= (32b signed), =long= (64b signed)
+- =boolean=
+- =float=, =double=
+- =char= (16b UTF-16 znak)
+
+* Stringi
+
+Formatiranje =String.format("...", ...)= - printf-style.
+
+* Arrayi
+
+Array je objektni tip.
+Definira se ga (skoraj) C-style, za inicializacijo pa potrebuješ =new=;
+#+begin_src java
+  int[] arr = new int[1000];
+  String[] scam = null;
+  // scam[3] da NullPointerException
+#+end_src
+
+* Standardna knjižnica
+
+=List<T>= interface nudi naslednje metode:
+- =add(T t)=
+- =add(int idx, T t)=
+- =clear()=
+- =contains(T o) -> boolean=
+- =get(int idx) -> T=
+- =isEmpty() -> boolean=
+- =remove(int idx)=
+- =remove(T t)=
+- =set(int idx, T t)=
+- =size() -> int=
+Implementirata ga =ArrayList= in =LinkedList=.
+
+=Map<K,V>= interface nudi naslednje metode:
+- =clear()=
+- =containsKey(K k)=
+- =containsValue(V v)=
+- =get(K k) -> V=
+- =getOrDefault(K k, V default) -> V=
+- =put(K k, V v)=
+- =remove(K k)=
+- =remove(K k, V v)=
+- =size() -> int=
+Implementirata ga =HashMap= in =TreeMap=.
